@@ -1,3 +1,5 @@
+const environment = process.env.NODE_ENV || 'development'
+const envSet = require(`./env.${environment}.js`)
 
 export default {
   mode: 'universal',
@@ -43,6 +45,7 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    baseURL: envSet.repoUrl
   },
   /*
   ** Build configuration
@@ -53,5 +56,6 @@ export default {
     */
     extend(config, ctx) {
     }
-  }
+  },
+  env: envSet
 }

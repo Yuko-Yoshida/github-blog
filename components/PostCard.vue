@@ -2,17 +2,17 @@
   <div class="card">
     <header class="card-header">
       <p class="card-header-title has-text-grey" id="title">
-        {{ title }}
+        {{ post.title }}
       </p>
     </header>
     <div class="card-content">
       <p id="displayContent">{{ contentForDisplay }}</p>
-      <a id="linkForPost" :href="post.url">Read More...</a>
+      <a id="linkForPost" :href="post.post.url">Read More...</a>
     </div>
     <footer class="card-footer">
       <b-taglist>
         <b-tag
-          v-for="(tag, index) in tags"
+          v-for="(tag, index) in post.tags"
           type="is-info"
           :href="tag.url"
           :id="`tag-${index+1}`"
@@ -27,26 +27,28 @@
 <script>
 export default {
   props: {
-    title: {
-      type: String,
-      required: true
-    },
-    tags: {
-      type: Array,
-      required: true
-    },
-    content: {
-      type: String,
-      required: true
-    },
     post: {
-      type: Object,
-      required: true
+      title: {
+        type: String,
+        required: true
+      },
+      tags: {
+        type: Array,
+        required: true
+      },
+      content: {
+        type: String,
+        required: true
+      },
+      post: {
+        type: Object,
+        required: true
+      }
     }
   },
   computed: {
     contentForDisplay: function() {
-      return (this.content.length < 40) ? this.content : this.content.slice(0, 40)+'...'
+      return (this.post.content.length < 40) ? this.post.content : this.post.content.slice(0, 40)+'...'
     }
   }
 }
