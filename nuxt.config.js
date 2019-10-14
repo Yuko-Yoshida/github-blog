@@ -39,6 +39,7 @@ export default {
     'nuxt-buefy',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/markdownit',
   ],
   /*
   ** Axios module configuration
@@ -57,5 +58,12 @@ export default {
     extend(config, ctx) {
     }
   },
-  env: envSet
+  env: envSet,
+  markdownit: {
+    injected: true,
+    breaks: true,
+    html: true,
+    linkify: true,
+    typography: true
+  }
 }

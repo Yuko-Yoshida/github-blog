@@ -6,7 +6,7 @@
       </p>
     </header>
     <div class="card-content">
-      <p id="displayContent">{{ contentForDisplay }}</p>
+      <div id="displayContent" v-html="$md.render(contentForDisplay)"></div>
       <a id="linkForPost" :href="post.post.url">Read More...</a>
     </div>
     <footer class="card-footer">
