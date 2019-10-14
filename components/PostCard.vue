@@ -14,10 +14,9 @@
         <b-tag
           v-for="(tag, index) in post.tags"
           type="is-info"
-          :href="tag.url"
           :id="`tag-${index+1}`"
         >
-        {{ tag.name }}
+          <a :href="tag.url">{{ tag.name }}</a>
         </b-tag>
       </b-taglist>
     </footer>
