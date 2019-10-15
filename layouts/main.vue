@@ -9,6 +9,28 @@
         </div>
       </div>
     </nav>
-    <nuxt/>
+    <div class="container">
+      <div class="columns">
+        <div class="column is-two-thirds">
+          <nuxt/>
+        </div>
+        <div class="column">
+          <ProfileCard />
+          <TagList />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
+
+<script>
+import TagList from '~/components/TagList'
+import ProfileCard from '~/components/ProfileCard'
+
+export default {
+  components: {
+    TagList,
+    ProfileCard
+  }
+}
+</script>

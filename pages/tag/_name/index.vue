@@ -1,28 +1,22 @@
 <template>
   <div class="container">
-    <div class="columns">
-      <div class="column is-two-thirds">
-        <h1 class="title">tag: {{ tagName }}</h1>
-        <PostCard
-          v-for='post in posts'
-          :post="post"
-        />
-      </div>
-      <div class="column">
-        <TagList
-          :tags="tags"
-        />
-      </div>
-    </div>
+    <h1 class="title">tag: {{ tagName }}</h1>
+    <PostCard
+      v-for='post in posts'
+      :post="post"
+    />
   </div>
 </template>
 
 <script>
 import PostCard from '~/components/PostCard'
-import TagList from '~/components/TagList'
 
 export default {
   layout: 'main',
+
+  async fetch ({ store, params }) {
+    await store.dispatch('main/init');
+  },
 
   async asyncData({ $axios, params, query, redirect }) {
     $axios.setToken('token '+process.env.token)
@@ -43,14 +37,9 @@ export default {
         }
       }
     })
-    const labels = await $axios.$get(`/labels`)
-    const tags = labels.map((label) => {
-      return { name: label.name, url: encodeURI(`/tag/${label.name}`) }
-    })
     return {
       issues,
       posts,
-      tags,
       tagName: params.name
     }
   },
@@ -63,7 +52,6 @@ export default {
 
   components: {
     PostCard,
-    TagList
   }
 }
 </script>
