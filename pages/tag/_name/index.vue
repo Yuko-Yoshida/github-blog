@@ -2,6 +2,7 @@
   <div class="container">
     <div class="columns">
       <div class="column is-two-thirds">
+        <h1 class="title">tag: {{ tagName }}</h1>
         <PostCard
           v-for='post in posts'
           :post="post"
@@ -23,9 +24,9 @@ import TagList from '~/components/TagList'
 export default {
   layout: 'main',
 
-  async asyncData({ $axios, query, redirect }) {
+  async asyncData({ $axios, params, query, redirect }) {
     $axios.setToken('token '+process.env.token)
-    const issues = await $axios.$get(`/issues?page=${query.page}`)
+    const issues = await $axios.$get(encodeURI(`/issues?page=${query.page}&labels=${params.name}`))
     if (issues.length < 1) return redirect(404, '/404')
     const posts = issues.map((issue) => {
       return {
@@ -49,7 +50,8 @@ export default {
     return {
       issues,
       posts,
-      tags
+      tags,
+      tagName: params.name
     }
   },
 
