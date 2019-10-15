@@ -16,6 +16,7 @@
         </div>
         <div class="column">
           <ProfileCard />
+          <RecentPosts />
           <TagList />
         </div>
       </div>
@@ -26,11 +27,13 @@
 <script>
 import TagList from '~/components/TagList'
 import ProfileCard from '~/components/ProfileCard'
+import RecentPosts from '~/components/RecentPosts'
 
 export default {
   components: {
     TagList,
-    ProfileCard
+    ProfileCard,
+    RecentPosts
   }
 }
 </script>

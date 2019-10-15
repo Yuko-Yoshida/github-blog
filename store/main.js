@@ -2,7 +2,8 @@ import axios from 'axios'
 
 export const state = () => ({
 	tags: null,
-  profile: null
+  profile: null,
+	posts: null
 })
 
 export const mutations = {
@@ -12,6 +13,9 @@ export const mutations = {
   SET_PROFILE: function(state, profile) {
     state.profile = profile
   },
+	SET_POSTS: function(state, posts) {
+		state.posts = posts
+	},
 }
 
 export const actions = {
@@ -31,5 +35,11 @@ export const actions = {
       return { name: label.name, url: encodeURI(`/tag/${label.name}`) }
     })
     commit('SET_TAGS', tags)
+
+		const recentIssues = issues.data.slice(0, 5)
+		const recentPosts = recentIssues.map((issue) => {
+			return { title: issue.title, url: encodeURI(`/post/${issue.number}`) }
+		})
+		commit('SET_POSTS', recentPosts)
   }
 }
