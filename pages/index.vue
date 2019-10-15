@@ -33,7 +33,7 @@ export default {
         tags: issue.labels.map((label) => {
           return {
             name: label.name,
-            url: label.id
+            url: `/tag/${label.name}`
           }
         }),
         content: issue.body,
