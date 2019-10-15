@@ -12,9 +12,11 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "nuxt-buefy": "^0.3.2",
     "@nuxtjs/axios": "^5.3.6",
-    "nuxt": "^2.0.0"
+    "@nuxtjs/markdownit": "^1.2.7",
+    "cross-env": "^6.0.3",
+    "nuxt": "^2.0.0",
+    "nuxt-buefy": "^0.3.2"
   },
   "devDependencies": {
     "@vue/test-utils": "^1.0.0-beta.27",

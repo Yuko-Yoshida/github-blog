@@ -1,47 +1,50 @@
 <template>
-  <section class="section">
-    <div class="columns is-mobile">
-
-      <card
-        title="Free"
-        icon="github-circle"
-      >
-        Open source on <a href="https://github.com/buefy/buefy"> GitHub</a>
-      </card>
-
-      <card
-        title="Responsive"
-        icon="cellphone-link"
-      >
-        <b class="has-text-grey">Every</b> component is responsive
-      </card>
-
-      <card
-        title="Modern"
-        icon="alert-decagram"
-      >
-        Built with <a href="https://vuejs.org/">Vue.js</a> and <a href="http://bulma.io/">Bulma</a>
-      </card>
-
-      <card
-        title="Lightweight"
-        icon="arrange-bring-to-front"
-      >
-        No other internal dependency
-      </card>
-
+  <div>
+    <div v-for='post in posts'>
+      <PostCard
+        :post="post"
+      />
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
-import Card from '~/components/Card'
+import PostCard from '~/components/PostCard'
 
 export default {
-  name: 'HomePage',
+  async asyncData({ $axios, query, redirect }) {
+    $axios.setToken('token '+process.env.token)
+    const issues = await $axios.$get(`/issues?page=${query.page}`)
+    if (issues.length < 1) return redirect(404, '/404')
+    const posts = issues.map((issue) => {
+      return {
+        title: issue.title,
+        tags: issue.labels.map((label) => {
+          return {
+            name: label.name,
+            url: label.id
+          }
+        }),
+        content: issue.body,
+        post: {
+          url: issue.id
+        }
+      }
+    })
+    return {
+      issues,
+      posts
+    }
+  },
+
+  data() {
+    return {
+      page: this.$route.query.page
+    }
+  },
 
   components: {
-    Card
+    PostCard
   }
 }
 </script>
