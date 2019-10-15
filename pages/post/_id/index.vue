@@ -17,7 +17,7 @@ export default {
       issue,
       post: {
         title: issue.title,
-        tags: issue.tags,
+        tags: issue.labels,
         content: issue.body
       }
     }

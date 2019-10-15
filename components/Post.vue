@@ -1,24 +1,26 @@
 <template>
-  <div class="card">
-    <header class="card-header">
-      <p class="card-header-title has-text-grey" id="title">
-        {{ post.title }}
-      </p>
-    </header>
-    <div class="card-content">
-      <div id="displayContent" v-html="$md.render(post.content)"></div>
-    </div>
-    <footer class="card-footer">
-      <b-taglist>
-        <b-tag
-          v-for="(tag, index) in post.tags"
-          type="is-info"
-          :id="`tag-${index+1}`"
-        >
-          <a :href="tag.url">{{ tag.name }}</a>
-        </b-tag>
-      </b-taglist>
-    </footer>
+  <div class="container">
+    <section class="section">
+      <div class="card article">
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content has-text-centered">
+              <p class="title article-title">{{ post.title }}</p>
+              <b-taglist class="level-item">
+                <b-tag
+                  v-for="(tag, index) in post.tags"
+                  type="is-info"
+                  :id="`tag-${index+1}`"
+                >
+                  <a :href="tag.url">{{ tag.name }}</a>
+                </b-tag>
+              </b-taglist>
+            </div>
+          </div>
+          <div class="content article-body" v-html="$md.render(post.content)"></div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
