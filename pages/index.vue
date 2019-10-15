@@ -12,6 +12,8 @@
 import PostCard from '~/components/PostCard'
 
 export default {
+  layout: 'main',
+
   async asyncData({ $axios, query, redirect }) {
     $axios.setToken('token '+process.env.token)
     const issues = await $axios.$get(`/issues?page=${query.page}`)

@@ -10,6 +10,8 @@
 import Post from '~/components/Post'
 
 export default {
+  layout: 'main',
+  
   async asyncData({ $axios, params, redirect }) {
     $axios.setToken('token '+process.env.token)
     const issue = await $axios.$get(`/issues/${params.id}`)
