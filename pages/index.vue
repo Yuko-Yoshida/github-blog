@@ -12,9 +12,10 @@
 import PostCard from '~/components/PostCard'
 
 export default {
-  async asyncData({ $axios }) {
+  async asyncData({ $axios, query, redirect }) {
     $axios.setToken('token '+process.env.token)
-    const issues = await $axios.$get('/issues')
+    const issues = await $axios.$get(`/issues?page=${query.page}`)
+    if (issues.length < 1) return redirect(404, '/404')
     const posts = issues.map((issue) => {
       return {
         title: issue.title,
@@ -33,6 +34,12 @@ export default {
     return {
       issues,
       posts
+    }
+  },
+
+  data() {
+    return {
+      page: this.$route.query.page
     }
   },
 
