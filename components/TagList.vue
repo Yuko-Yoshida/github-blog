@@ -12,7 +12,7 @@
             <div class="media-content has-text-centered">
               <b-taglist>
                 <b-tag
-                  v-for="(tag, index) in tags"
+                  v-for="(tag, index) in $store.state.main.tags"
                   type="is-info"
                   :id="`tag-${index+1}`"
                 >
@@ -29,11 +29,11 @@
 
 <script>
 export default {
-  props: {
-    tags: {
-      type: Array,
-      required: true
-    },
-  },
+  // props: {
+  //   tags: {
+  //     type: Array,
+  //     required: true
+  //   },
+  // },
 }
 </script>
