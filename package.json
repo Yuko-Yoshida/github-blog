@@ -12,11 +12,22 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@iktakahiro/markdown-it-katex": "^3.1.0",
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/markdownit": "^1.2.7",
     "cross-env": "^6.0.3",
+    "fs": "0.0.1-security",
+    "markdown-it-abbr": "^1.0.4",
+    "markdown-it-emoji": "^1.4.0",
+    "markdown-it-footnote": "^3.0.2",
+    "markdown-it-imsize": "^2.0.1",
+    "markdown-it-ins": "^3.0.0",
+    "markdown-it-mark": "^3.0.0",
+    "markdown-it-sanitizer": "^0.4.3",
+    "markdown-it-sub": "^1.0.0",
     "nuxt": "^2.0.0",
-    "nuxt-buefy": "^0.3.2"
+    "nuxt-buefy": "^0.3.2",
+    "vue-highlightjs": "^1.3.3"
   },
   "devDependencies": {
     "@vue/test-utils": "^1.0.0-beta.27",
