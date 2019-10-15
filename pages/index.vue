@@ -1,15 +1,24 @@
 <template>
-  <div>
-    <div v-for='post in posts'>
-      <PostCard
-        :post="post"
-      />
+  <div class="container">
+    <div class="columns">
+      <div class="column is-two-thirds">
+        <PostCard
+          v-for='post in posts'
+          :post="post"
+        />
+      </div>
+      <div class="column">
+        <TagList
+          :tags="tags"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import PostCard from '~/components/PostCard'
+import TagList from '~/components/TagList'
 
 export default {
   layout: 'main',
@@ -33,9 +42,14 @@ export default {
         }
       }
     })
+    const labels = await $axios.$get(`/labels`)
+    const tags = labels.map((label) => {
+      return { name: label.name, url: `/tag/${label.name}` }
+    })
     return {
       issues,
-      posts
+      posts,
+      tags
     }
   },
 
@@ -46,7 +60,8 @@ export default {
   },
 
   components: {
-    PostCard
+    PostCard,
+    TagList
   }
 }
 </script>
