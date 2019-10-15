@@ -27,7 +27,7 @@ export default {
         }),
         content: issue.body,
         post: {
-          url: issue.id
+          url: `/post/${issue.number}`
         }
       }
     })
