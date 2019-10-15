@@ -1,6 +1,6 @@
 <template>
-  <div class="card">
-    <div class="card-content">
+  <section class="section">
+    <div class="card article">
       <div class="media">
         <div class="media-left">
           <figure class="image is-48x48">
@@ -21,7 +21,7 @@
         <a :href="$store.state.main.profile.html_url" class="card-footer-item">GitHub</a>
       </footer>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
