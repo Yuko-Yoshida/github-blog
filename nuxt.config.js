@@ -25,6 +25,7 @@ export default {
   ** Global CSS
   */
   css: [
+    { src: '~/node_modules/highlight.js/styles/github-gist.css', lang: 'css' }
   ],
   /*
   ** Plugins to load before mounting the App
@@ -64,6 +65,28 @@ export default {
     breaks: true,
     html: true,
     linkify: true,
-    typography: true
+    typography: true,
+    use: [
+      'markdown-it-sanitizer',
+      'markdown-it-emoji',
+      'markdown-it-footnote',
+      // 'markdown-it-imsize',
+      'markdown-it-sub',
+      'markdown-it-abbr',
+      'markdown-it-mark',
+      'markdown-it-ins',
+      '@iktakahiro/markdown-it-katex'
+    ],
+    highlight: (str, lang) => {
+      const hljs = require('highlight.js')
+      if (lang && hljs.getLanguage(lang)) {
+        try {
+          return '<pre class="hljs"><code>' +
+                  hljs.highlight(lang, str, true).value +
+                  '</code></pre>'
+        } catch (__) {}
+      }
+      return '<pre class="hljs"><code>' +  hljs.highlight('plaintext', str, true).value + '</code></pre>'
+    },
   }
 }
