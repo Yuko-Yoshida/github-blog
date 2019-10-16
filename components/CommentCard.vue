@@ -4,10 +4,10 @@
       <div class="card">
         <div class="card-content">
           <article class="media">
-            <figure class="media-left">
-              <p class="image is-64x64">
+            <figure class="image is-64x64 media-left">
+              <a :href="comment.user.html_url">
                 <img class="is-rounded" :src="comment.user.avatar_url">
-              </p>
+              </a>
             </figure>
             <div class="media-content">
               <div class="content">
