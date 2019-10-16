@@ -15,6 +15,9 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script: [
+      { src: 'https://cdn.jsdelivr.net/npm/jdenticon@2.2.0', async: true }
     ]
   },
   /*
@@ -88,5 +91,5 @@ export default {
       }
       return '<pre class="hljs"><code>' +  hljs.highlight('plaintext', str, true).value + '</code></pre>'
     },
-  }
+  },
 }
