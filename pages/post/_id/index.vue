@@ -3,19 +3,32 @@
     <Post
       :post="post"
     />
+    <div class="container">
+      <section class="section">
+        <div class="card">
+          <div class="card-content has-text-centered">
+            <Strong>
+              Comments
+            </Strong>
+          </div>
+        </div>
+      </section>
+    </div>
     <CommentCard
       v-for="comment in comments"
       :comment="comment"
     />
     <div class="container">
       <section class="section">
+        <a :href="issue.html_url">
         <div class="card">
-          <div class="card-content has-text-centered">
+          <div class="card-content has-text-centered has-text-primary">
             <Strong>
-              <a :href="issue.html_url">Leave Comments!</a>
+              Leave Comments!
             </Strong>
           </div>
         </div>
+        </a>
       </section>
     </div>
   </div>
