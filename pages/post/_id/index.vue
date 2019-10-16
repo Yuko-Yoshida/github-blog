@@ -7,6 +7,17 @@
       v-for="comment in comments"
       :comment="comment"
     />
+    <div class="container">
+      <section class="section">
+        <div class="card">
+          <div class="card-content has-text-centered">
+            <Strong>
+              <a :href="issue.html_url">Leave Comments!</a>
+            </Strong>
+          </div>
+        </div>
+      </section>
+    </div>
   </div>
 </template>
 
