@@ -62,9 +62,11 @@ export default {
       post: {
         title: issue.title,
         tags: postTags,
-        content: issue.body
+        content: issue.body,
+        createdAt: issue.created_at,
+        updatedAt: issue.updated_at,
       },
-      comments
+      comments,
     }
   },
 
