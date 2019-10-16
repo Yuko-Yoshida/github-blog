@@ -1,14 +1,6 @@
 <template>
   <div id="base" class="has-background-white-ter">
-    <nav class="navbar">
-      <div class="container">
-        <div class="navbar-start">
-          <h1 class="navbar-item title">
-            <a href="/">Hoge</a>
-          </h1>
-        </div>
-      </div>
-    </nav>
+    <Navbar />
     <div class="container" id="main">
       <div class="columns is-1">
         <div class="column is-two-thirds">
@@ -25,12 +17,14 @@
 </template>
 
 <script>
+import Navbar from '~/components/Navbar'
 import TagList from '~/components/TagList'
 import ProfileCard from '~/components/ProfileCard'
 import RecentPosts from '~/components/RecentPosts'
 
 export default {
   components: {
+    Navbar,
     TagList,
     ProfileCard,
     RecentPosts
