@@ -5,6 +5,7 @@ export const state = () => ({
   profile: null,
 	posts: null,
 	blogName: null,
+	totalPosts: null
 })
 
 export const mutations = {
@@ -19,6 +20,9 @@ export const mutations = {
 	},
 	SET_BLOGNAME: function(state, blogName) {
 		state.blogName = blogName
+	},
+	SET_TOTALPOSTS: function(state, totalPosts) {
+		state.totalPosts = totalPosts
 	},
 }
 
@@ -51,6 +55,8 @@ export const actions = {
 		commit('SET_POSTS', recentPosts)
 
 		const repo = await $axios.get()
-    commit('SET_BLOGNAME', repo.data.name)		
+    commit('SET_BLOGNAME', repo.data.name)
+
+		commit('SET_TOTALPOSTS', issues.data[0].number)
   }
 }

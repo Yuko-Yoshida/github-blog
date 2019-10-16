@@ -40,7 +40,7 @@ import CommentCard from '~/components/CommentCard'
 
 
 export default {
-  layout: 'main',
+  layout: 'post',
 
   async fetch ({ store, params }) {
     await store.dispatch('main/init');
