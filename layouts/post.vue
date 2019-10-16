@@ -5,7 +5,6 @@
       <div class="columns is-1">
         <div class="column is-two-thirds">
           <nuxt/>
-          <Pagination />
         </div>
         <div class="column">
           <ProfileCard />
@@ -22,7 +21,6 @@ import Navbar from '~/components/Navbar'
 import TagList from '~/components/TagList'
 import ProfileCard from '~/components/ProfileCard'
 import RecentPosts from '~/components/RecentPosts'
-import Pagination from '~/components/Pagination'
 
 export default {
   components: {
@@ -30,7 +28,6 @@ export default {
     TagList,
     ProfileCard,
     RecentPosts,
-    Pagination
   }
 }
 </script>
