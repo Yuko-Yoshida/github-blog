@@ -1,14 +1,15 @@
 <template>
-  <section class="section">
-    <div class="card">
+  <div class="section">
+    <div class="card" id="postCard">
       <div class="card-content">
         <div class="columns">
           <div class="column is-one-third">
             <figure class="image is-256x256">
-              <svg width="256" height="256" :data-jdenticon-value="post.content"></svg>
+              <svg width="100%" height="100%" :data-jdenticon-value="contentForDisplay"></svg>
             </figure>
           </div>
-          <div class="column">
+
+          <div class="column" id="content">
             <b-taglist>
               <b-tag
                 v-for="(tag, index) in post.tags"
@@ -23,13 +24,17 @@
               {{ post.title }}
             </p>
 
-            <div id="displayContent" class="has-text-grey" v-html="contentForDisplay"></div>
-            <a id="linkForPost" :href="post.post.url">Read More...</a>
+            <div id="displayContent" class="has-text-grey is-size-5" v-html="contentForDisplay"></div>
+
+            <a :href="post.post.url"　id="toPost">
+              <p class="has-text-right">Read More...</p>
+            </a>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </nuxt-link>
+  </div>
 </template>
 
 <script>
@@ -54,6 +59,7 @@
         }
       }
     },
+
     computed: {
       contentForDisplay: function() {
         return (this.post.content.length < 90) ? this.post.content : this.post.content.slice(0, 90)+'...'
@@ -61,3 +67,20 @@
     }
   }
 </script>
+
+<style>
+  #postCard {
+    transition: box-shadow 0.3s;
+  }
+  #postCard:hover {
+    box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.5);
+  }
+  #content {
+    position: relative;
+  }
+  #toPost {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+</style>
