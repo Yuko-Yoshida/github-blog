@@ -1,6 +1,14 @@
 <template>
   <div class="container">
-    <h1 class="title">tag: {{ tagName }}</h1>
+    <div class="section">
+      <div class="card">
+        <div class="card-content">
+          <p class="title" id="title">
+            {{ tagName }}
+          </p>
+        </div>
+      </div>
+    </div>
     <PostCard
       v-for='post in posts'
       :post="post"
