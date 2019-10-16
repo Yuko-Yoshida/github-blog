@@ -25,7 +25,7 @@ export const actions = {
       headers: {'Authorization': 'token '+process.env.token}
     })
 
-    const issues = await $axios.get(`/issues`)
+    const issues = await $axios.get(`/issues?filter=created`)
     const owner = issues.data[0].user
     const profile = await $axios.get(owner.url)
     commit('SET_PROFILE', profile.data)
