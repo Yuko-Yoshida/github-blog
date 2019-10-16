@@ -3,7 +3,8 @@ import axios from 'axios'
 export const state = () => ({
 	tags: null,
   profile: null,
-	posts: null
+	posts: null,
+	blogName: null,
 })
 
 export const mutations = {
@@ -15,6 +16,9 @@ export const mutations = {
   },
 	SET_POSTS: function(state, posts) {
 		state.posts = posts
+	},
+	SET_BLOGNAME: function(state, blogName) {
+		state.blogName = blogName
 	},
 }
 
@@ -45,5 +49,8 @@ export const actions = {
 			return { title: issue.title, url: encodeURI(`/post/${issue.number}`) }
 		})
 		commit('SET_POSTS', recentPosts)
+
+		const repo = await $axios.get()
+    commit('SET_BLOGNAME', repo.data.name)		
   }
 }
