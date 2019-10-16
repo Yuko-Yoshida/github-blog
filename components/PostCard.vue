@@ -31,6 +31,10 @@
 
             <div id="displayContent" class="has-text-grey is-size-5" v-html="contentForDisplay"></div>
 
+            <p class="is-size-6 has-text-grey" id="date">
+              {{ date }}
+            </p>
+
             <a :href="post.post.url"　id="toPost">
               <p class="has-text-right">Read More...</p>
             </a>
@@ -68,6 +72,16 @@
     computed: {
       contentForDisplay: function() {
         return (this.post.content.length < 90) ? this.post.content : this.post.content.slice(0, 90)+'...'
+      },
+      date: function() {
+        if (this.post.post.createdAt === this.post.post.updatedAt) {
+          const createdDate = new Date(this.post.post.createdAt)
+          return `${createdDate.getFullYear()}/${createdDate.getMonth()+1}/${createdDate.getDate()}`
+        }
+        else {
+          const updatedDate = new Date(this.post.post.updatedAt)
+          return `Updated at: ${updatedDate.getFullYear()}/${updatedDate.getMonth()+1}/${updatedDate.getDate()}`
+        }
       }
     }
   }
@@ -87,5 +101,13 @@
     position: absolute;
     bottom: 10px;
     right: 10px;
+  }
+  #date {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+  }
+  #displayContent {
+    padding-bottom: 2rem;
   }
 </style>

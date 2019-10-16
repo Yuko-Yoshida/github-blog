@@ -42,7 +42,9 @@ export default {
         }),
         content: issue.body,
         post: {
-          url: `/post/${issue.number}`
+          url: `/post/${issue.number}`,
+          createdAt: issue.created_at,
+          updatedAt: issue.updated_at,
         }
       }
     })

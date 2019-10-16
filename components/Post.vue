@@ -7,7 +7,7 @@
             <div class="media-content has-text-centered">
               <p class="title article-title">{{ post.title }}</p>
               <b-taglist class="level-item">
-                <div v-for="(tag, index) in $store.state.main.tags">
+                <div v-for="(tag, index) in post.tags">
                   <a :href="tag.url">
                     <b-tag
                       class="b-tag"
@@ -20,6 +20,9 @@
                   </a>
                 </div>
               </b-taglist>
+              <p class="is-size-6 has-text-grey has-text-centered">
+                {{ date }}
+              </p>
             </div>
           </div>
           <div class="content article-body" v-html="$md.render(post.content)"></div>
@@ -47,5 +50,18 @@ export default {
       }
     }
   },
+
+  computed: {
+    date: function() {
+      if (this.post.createdAt === this.post.updatedAt) {
+        const createdDate = new Date(this.post.createdAt)
+        return `${createdDate.getFullYear()}/${createdDate.getMonth()+1}/${createdDate.getDate()}`
+      }
+      else {
+        const updatedDate = new Date(this.post.updatedAt)
+        return `Updated at: ${updatedDate.getFullYear()}/${updatedDate.getMonth()+1}/${updatedDate.getDate()}`
+      }
+    }
+  }
 }
 </script>
