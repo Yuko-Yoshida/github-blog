@@ -3,7 +3,7 @@
     <section class="section">
       <div class="card article">
         <header class="card-header">
-          <p class="card-header-title has-text-grey" id="title">
+          <p class="card-header-title" id="title">
             Tags
           </p>
         </header>
