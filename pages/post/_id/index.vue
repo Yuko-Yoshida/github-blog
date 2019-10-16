@@ -39,7 +39,8 @@ export default {
     const postTags = issue.labels.map((label) => {
       return {
         name: label.name,
-        url: encodeURI(`/tag/${label.name}`)
+        url: encodeURI(`/tag/${label.name}`),
+        color: label.color
       }
     })
     const comments = await $axios.$get(`/issues/${params.id}/comments`)

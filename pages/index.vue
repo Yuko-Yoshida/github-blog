@@ -27,7 +27,8 @@ export default {
         tags: issue.labels.map((label) => {
           return {
             name: label.name,
-            url: encodeURI(`/tag/${label.name}`)
+            url: encodeURI(`/tag/${label.name}`),
+            color: label.color
           }
         }),
         content: issue.body,

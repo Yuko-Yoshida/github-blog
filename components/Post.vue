@@ -7,13 +7,18 @@
             <div class="media-content has-text-centered">
               <p class="title article-title">{{ post.title }}</p>
               <b-taglist class="level-item">
-                <b-tag
-                  v-for="(tag, index) in post.tags"
-                  type="is-info"
-                  :id="`tag-${index+1}`"
-                >
-                  <a :href="tag.url">{{ tag.name }}</a>
-                </b-tag>
+                <div v-for="(tag, index) in $store.state.main.tags">
+                  <a :href="tag.url">
+                    <b-tag
+                      class="b-tag"
+                      type="is-info"
+                      :id="`tag-${index+1}`"
+                      :style="{ backgroundColor: `#${tag.color}` }"
+                    >
+                      <p>{{ tag.name }}</p>
+                    </b-tag>
+                  </a>
+                </div>
               </b-taglist>
             </div>
           </div>
