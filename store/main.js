@@ -32,7 +32,11 @@ export const actions = {
 
     const labels = await $axios.get(`/labels`)
     const tags = labels.data.map((label) => {
-      return { name: label.name, url: encodeURI(`/tag/${label.name}`) }
+      return {
+				name: label.name,
+				url: encodeURI(`/tag/${label.name}`),
+				color: label.color
+			}
     })
     commit('SET_TAGS', tags)
 
