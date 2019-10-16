@@ -11,13 +11,18 @@
           <div class="media">
             <div class="media-content has-text-centered">
               <b-taglist>
-                <b-tag
-                  v-for="(tag, index) in $store.state.main.tags"
-                  type="is-info"
-                  :id="`tag-${index+1}`"
-                >
-                  <a :href="tag.url">{{ tag.name }}</a>
-                </b-tag>
+                <div v-for="(tag, index) in $store.state.main.tags">
+                  <a :href="tag.url">
+                    <b-tag
+                      class="b-tag"
+                      type="is-info"
+                      :id="`tag-${index+1}`"
+                      :style="{ backgroundColor: `#${tag.color}` }"
+                    >
+                      <p>{{ tag.name }}</p>
+                    </b-tag>
+                  </a>
+                </div>
               </b-taglist>
             </div>
           </div>
@@ -27,13 +32,16 @@
   </div>
 </template>
 
-<script>
-export default {
-  // props: {
-  //   tags: {
-  //     type: Array,
-  //     required: true
-  //   },
-  // },
+<style>
+.b-tag {
+  margin: 5px;
 }
-</script>
+
+.b-tag {
+  transition: box-shadow 0.3s;
+}
+
+.b-tag:hover {
+  box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.5);
+}
+</style>
