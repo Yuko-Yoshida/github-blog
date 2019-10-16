@@ -36,4 +36,12 @@
 .b-tag {
   margin: 5px;
 }
+
+.b-tag {
+  transition: box-shadow 0.3s;
+}
+
+.b-tag:hover {
+  box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.5);
+}
 </style>
