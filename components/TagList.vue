@@ -12,7 +12,7 @@
             <div class="media-content has-text-centered">
               <b-taglist>
                 <div v-for="(tag, index) in $store.state.main.tags">
-                  <a :href="tag.url">
+                  <nuxt-link :to="tag.url">
                     <b-tag
                       class="b-tag"
                       type="is-info"
@@ -21,7 +21,7 @@
                     >
                       <p>{{ tag.name }}</p>
                     </b-tag>
-                  </a>
+                  </nuxt-link>
                 </div>
               </b-taglist>
             </div>

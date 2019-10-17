@@ -11,7 +11,7 @@
           <div class="content">
             <ul>
               <li v-for="post in $store.state.main.posts">
-                <a :href="post.url">{{ post.title }}</a>
+                <nuxt-link :to="post.url">{{ post.title }}</nuxt-link>
               </li>
             </ul>
           </div>
