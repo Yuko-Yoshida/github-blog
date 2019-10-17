@@ -4,7 +4,7 @@
     <div class="container" id="main">
       <div class="columns is-1">
         <div class="column is-two-thirds">
-          <nuxt/>
+          <nuxt :nuxt-child-key="$route.fullPath"/>
           <Pagination />
         </div>
         <div class="column">

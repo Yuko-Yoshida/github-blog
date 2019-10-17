@@ -16,26 +16,30 @@
           :page="props.page"
           :id="`page${props.page.number}`"
           tag="nuxt-link"
-          :to="`${base}?page=${props.page.number}`">
+          :to="{ path: `${base}`, query: { page: `${props.page.number}` } }">
       </b-pagination-button>
 
-      <b-pagination-button
-          slot="previous"
-          slot-scope="props"
-          :page="props.page"
-          tag="nuxt-link"
-          :to="`${base}?page=${props.page.number}`">
-          Previous
-      </b-pagination-button>
+      <div v-if="current > 1">
+        <b-pagination-button
+            slot="previous"
+            slot-scope="props"
+            :page="props.page"
+            tag="nuxt-link"
+            :to="{ path: `${base}`, query: { page: `${props.page.number}` } }">
+            Previous
+        </b-pagination-button>
+      </div>
 
-      <b-pagination-button
-          slot="next"
-          slot-scope="props"
-          :page="props.page"
-          tag="nuxt-link"
-          :to="`${base}?page=${props.page.number}`">
-          Next
-      </b-pagination-button>
+      <div v-if="$store.state.main.totalPosts / 20 > 1 && $store.state.main.totalPosts > current">
+        <b-pagination-button
+            slot="next"
+            slot-scope="props"
+            :page="props.page"
+            tag="nuxt-link"
+            :to="{ path: `${base}`, query: { page: `${props.page.number}` } }">
+            Next
+        </b-pagination-button>
+      </div>
     </b-pagination>
   </div>
 </template>
