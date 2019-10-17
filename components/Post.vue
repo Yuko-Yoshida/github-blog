@@ -8,7 +8,7 @@
               <p class="title article-title">{{ post.title }}</p>
               <b-taglist class="level-item">
                 <div v-for="(tag, index) in post.tags">
-                  <a :href="tag.url">
+                  <nuxt-link :to="tag.url">
                     <b-tag
                       class="b-tag"
                       type="is-info"
@@ -17,7 +17,7 @@
                     >
                       <p>{{ tag.name }}</p>
                     </b-tag>
-                  </a>
+                  </nuxt-link>
                 </div>
               </b-taglist>
               <p class="is-size-6 has-text-grey has-text-centered">

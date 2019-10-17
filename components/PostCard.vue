@@ -12,7 +12,7 @@
           <div class="column" id="content">
             <b-taglist>
               <div v-for="(tag, index) in post.tags">
-                <a :href="tag.url">
+                <nuxt-link :to="tag.url">
                   <b-tag
                     class="b-tag"
                     type="is-info"
@@ -21,7 +21,7 @@
                   >
                     <p>{{ tag.name }}</p>
                   </b-tag>
-                </a>
+                </nuxt-link>
               </div>
             </b-taglist>
 
@@ -35,9 +35,9 @@
               {{ date }}
             </p>
 
-            <a :href="post.post.url"　id="toPost">
+            <nuxt-link :to="post.post.url"　id="toPost">
               <p class="has-text-right">Read More...</p>
-            </a>
+            </nuxt-link>
           </div>
         </div>
       </div>
