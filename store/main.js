@@ -1,4 +1,5 @@
 import axios from 'axios'
+import config from '~/nuxt.config.js'
 
 export const state = () => ({
 	tags: null,
@@ -54,8 +55,7 @@ export const actions = {
 		})
 		commit('SET_POSTS', recentPosts)
 
-		const repo = await $axios.get()
-    commit('SET_BLOGNAME', repo.data.name)
+    commit('SET_BLOGNAME', config.head.title)
 
 		commit('SET_TOTALPOSTS', issues.data[0].number)
   }
