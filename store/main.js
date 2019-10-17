@@ -34,8 +34,8 @@ export const actions = {
       headers: {'Authorization': 'token '+process.env.token}
     })
 
-    const issues = await $axios.get(`/issues?filter=created`)
-    const owner = issues.data[0].user
+    const repo = await $axios.get()
+    const owner = repo.data.owner
     const profile = await $axios.get(owner.url)
     commit('SET_PROFILE', profile.data)
 
@@ -49,6 +49,7 @@ export const actions = {
     })
     commit('SET_TAGS', tags)
 
+		const issues = await $axios.get(`/issues?filter=created`)
 		const recentIssues = issues.data.slice(0, 5)
 		const recentPosts = recentIssues.map((issue) => {
 			return { title: issue.title, url: encodeURI(`/post/${issue.number}`) }
@@ -57,6 +58,7 @@ export const actions = {
 
     commit('SET_BLOGNAME', config.head.title)
 
-		commit('SET_TOTALPOSTS', issues.data[0].number)
+		if (issues.data.length > 0) commit('SET_TOTALPOSTS', issues.data[0].number)
+		else commit('SET_TOTALPOSTS', 0)
   }
 }
