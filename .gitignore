@@ -87,5 +87,6 @@ sw.*
 # Mac OSX
 .DS_Store
 
+env.production.js
 env.development.js
 env.test.js
