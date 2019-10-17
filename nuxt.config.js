@@ -4,7 +4,7 @@ const environment = process.env.NODE_ENV || 'development'
 const envSet = require(`./env.${environment}.js`)
 const $axios = axios.create({
   baseURL: envSet.repoUrl,
-  headers: { 'Authorization': 'token '+envSet.token }
+  headers: { 'Authorization': 'token '+process.env.token }
 })
 
 const routerBase = process.env.NODE_ENV === 'production' ? {
@@ -46,6 +46,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~/plugins/axios'
   ],
   /*
   ** Nuxt.js modules

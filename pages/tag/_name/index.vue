@@ -27,7 +27,6 @@ export default {
   },
 
   async asyncData({ $axios, params, query, redirect }) {
-    $axios.setToken('token '+process.env.token)
     const issues = await $axios.$get(encodeURI(`/issues?page=${query.page}&labels=${params.name}&filter=created`))
     if (issues.length < 1) return redirect(404, '/404')
     const posts = issues.map((issue) => {

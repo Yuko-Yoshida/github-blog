@@ -47,7 +47,6 @@ export default {
   },
 
   async asyncData({ $axios, params, redirect }) {
-    $axios.setToken('token '+process.env.token)
     const issue = await $axios.$get(`/issues/${params.id}`)
     const postTags = issue.labels.map((label) => {
       return {
