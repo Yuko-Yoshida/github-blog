@@ -33,6 +33,6 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: env repoUrl=$REPO_URL token=$TOKEN blogTitle=$BLOG_TITLE deployRepoUrl=$REPO_URL npm run generate
+      - run: env repoUrl=$REPO_URL token=$TOKEN blogTitle=$BLOG_TITLE deployRepoUrl=$DEPLOY_REPO_URL npm run generate
       - run: git add dist -f && git commit -m "Update"
       - run: git subtree push --force --prefix dist origin gh-pages
