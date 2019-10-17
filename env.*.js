@@ -1,5 +1,6 @@
 module.exports = {
   repoUrl: '',
   token: '',
-  blogTitle: ''
+  blogTitle: '',
+  deployRepoUrl: ''
 }

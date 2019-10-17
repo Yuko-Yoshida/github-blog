@@ -1,6 +1,12 @@
 const environment = process.env.NODE_ENV || 'development'
 const envSet = require(`./env.${environment}.js`)
 
+const routerBase = process.env.NODE_ENV === 'production' ? {
+  router: {
+    base: '/deployRepoUrl/'
+  }
+} : {}
+
 export default {
   mode: 'universal',
   /*
@@ -92,4 +98,5 @@ export default {
       return '<pre class="hljs"><code>' +  hljs.highlight('plaintext', str, true).value + '</code></pre>'
     },
   },
+  ...routerBase,
 }
