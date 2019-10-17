@@ -1,9 +1,15 @@
+import axios from 'axios'
+
 const environment = process.env.NODE_ENV || 'development'
 const envSet = require(`./env.${environment}.js`)
+const $axios = axios.create({
+  baseURL: envSet.repoUrl,
+  headers: { 'Authorization': 'token '+envSet.token }
+})
 
 const routerBase = process.env.NODE_ENV === 'production' ? {
   router: {
-    base: '/deployRepoUrl/'
+    base: envSet.deployRepoUrl
   }
 } : {}
 
@@ -99,4 +105,28 @@ export default {
     },
   },
   ...routerBase,
+  generate: {
+    routes: async function () {
+      const postRoutes = []
+      let page = 1
+      while (true) {
+        const res = await $axios.get(`/issues?filter=created&page=${page}`)
+        const postRoute = res.data.map((issue) => {
+          return '/post/' + issue.number
+        })
+        if (postRoute.length < 1) break
+        postRoutes.push(...postRoute)
+        page++
+      }
+
+      const tagRoutes = await $axios.get('/labels')
+        .then((res) => {
+          return res.data.map((labels) => {
+            return '/tag/' + labels.name
+          })
+        })
+
+      return [...postRoutes, ...tagRoutes]
+    }
+  }
 }
