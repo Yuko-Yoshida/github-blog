@@ -18,7 +18,7 @@ export default {
   },
 
   async asyncData({ $axios, query, redirect }) {
-    const issues = await $axios.$get(`/issues?page=${query.page}&filter=created`)
+    const issues = await $axios.$get(`/issues?page=${query.page}&filter=created&state=open`)
     if (issues.length < 1) return redirect(404, '/404')
     const posts = issues.map((issue) => {
       return {
