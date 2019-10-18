@@ -43,3 +43,9 @@ jobs:
       - run:
          command: git subtree push --prefix dist origin gh-pages
          when: always
+      - run:
+         command: git commit --allow-empty -m "Trigger rebuild"
+         when: always
+      - run:
+         command: git push
+         when: always
