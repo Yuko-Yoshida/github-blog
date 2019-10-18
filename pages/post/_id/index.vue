@@ -76,12 +76,14 @@ export default {
   },
 
   head() {
-    meta: [
-      { name: 'twitter:card', content: 'summary' },
-      { name: 'twitter:title', content: this.post.title },
-      { name: 'twitter:description', content: this.post.content.slice(0, 90) },
-      { name: 'twitter:image', content: this.$store.state.main.profile.avatar_url },
-    ]
+    return {
+      meta: [
+        { name: 'twitter:card', content: 'summary' },
+        { name: 'twitter:title', content: this.post.title },
+        { name: 'twitter:description', content: this.post.content.slice(0, 90) },
+        { name: 'twitter:image', content: this.$store.state.main.profile.avatar_url },
+      ]
+    }
   },
 
   components: {
