@@ -39,5 +39,7 @@ jobs:
       - run: git config --global user.email "github-blog@example.com"
       - run: git config --global user.name "github-blog"
       - run: git add dist -f && git commit -m "Update"
-      - run: git push origin :gh-pages; exit 0
-      - run: git subtree push --prefix dist origin gh-pages
+      - run: git push origin :gh-pages
+      - run:
+         command: git subtree push --prefix dist origin gh-pages
+         when: always
