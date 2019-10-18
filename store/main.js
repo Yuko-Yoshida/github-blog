@@ -49,7 +49,7 @@ export const actions = {
     })
     commit('SET_TAGS', tags)
 
-		const issues = await $axios.get(`/issues?filter=created`)
+		const issues = await $axios.get(`/issues?filter=created&state=open`)
 		const recentIssues = issues.data.slice(0, 5)
 		const recentPosts = recentIssues.map((issue) => {
 			return { title: issue.title, url: encodeURI(`/post/${issue.number}`) }
