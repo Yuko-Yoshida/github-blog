@@ -14,6 +14,7 @@
         </div>
       </div>
     </div>
+    <Footer />
   </div>
 </template>
 
@@ -23,6 +24,7 @@ import TagList from '~/components/TagList'
 import ProfileCard from '~/components/ProfileCard'
 import RecentPosts from '~/components/RecentPosts'
 import Pagination from '~/components/Pagination'
+import Footer from '~/components/Footer'
 
 export default {
   components: {
@@ -30,7 +32,8 @@ export default {
     TagList,
     ProfileCard,
     RecentPosts,
-    Pagination
+    Pagination,
+    Footer
   }
 }
 </script>
