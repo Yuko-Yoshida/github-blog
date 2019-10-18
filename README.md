@@ -1,6 +1,6 @@
 # github-blog
 
-> My splendiferous Nuxt.js project
+How to install in japanese > https://yuko-yoshida.github.io/i-have-no-desire/post/2/
 
 ## Build Setup
 
