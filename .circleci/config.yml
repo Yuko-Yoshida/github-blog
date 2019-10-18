@@ -34,7 +34,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run: chmod +x ./bootstrap.sh
-      - run: ./bootstrap.sh $REPO_URL $BLOG_TITLE $DEPLOY_REPO_URL
+      - run: ./bootstrap.sh "$REPO_URL" "$BLOG_TITLE" "$DEPLOY_REPO_URL"
       - run: env token=$TOKEN npm run generate
       - run: git config --global user.email "github-blog@example.com"
       - run: git config --global user.name "github-blog"
