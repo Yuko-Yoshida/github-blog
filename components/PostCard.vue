@@ -71,7 +71,8 @@
 
     computed: {
       contentForDisplay: function() {
-        return (this.post.content.length < 90) ? this.post.content : this.post.content.slice(0, 90)+'...'
+        const headline = this.post.content.slice(0, this.post.content.search(/###/))
+        return (headline.length < 90) ? headline : headline.slice(0, 90)+'...'
       },
       date: function() {
         if (this.post.post.createdAt === this.post.post.updatedAt) {
