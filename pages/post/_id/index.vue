@@ -92,3 +92,10 @@ export default {
   }
 }
 </script>
+
+<style>
+  iframe {
+    width: 640px;
+    height: 390px;
+  }
+</style>
