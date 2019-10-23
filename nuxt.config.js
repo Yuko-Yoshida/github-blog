@@ -91,7 +91,8 @@ export default {
       'markdown-it-abbr',
       'markdown-it-mark',
       'markdown-it-ins',
-      '@iktakahiro/markdown-it-katex'
+      '@iktakahiro/markdown-it-katex',
+      'markdown-it-video'
     ],
     highlight: (str, lang) => {
       const hljs = require('highlight.js')
